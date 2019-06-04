@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { roundToTwo } from "../../helpers";
 
 const TransactionBest = props => {
   const { transactions, euroRate } = props;
@@ -15,10 +16,6 @@ const TransactionBest = props => {
       return 0;
     }
     return index;
-  };
-
-  const roundToTwo = num => {
-    return +(Math.round(num + "e+2") + "e-2");
   };
 
   const renderHelper = () => {

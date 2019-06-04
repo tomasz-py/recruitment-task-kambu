@@ -2,12 +2,9 @@ import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { removeTransaction } from "../../actions";
+import { roundToTwo } from "../../helpers";
 
 const Transaction = props => {
-  const roundToTwo = num => {
-    return +(Math.round(num + "e+2") + "e-2");
-  };
-
   const removeTransaction = index => {
     props.removeTransaction(index);
   };
