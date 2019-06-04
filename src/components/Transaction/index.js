@@ -1,10 +1,16 @@
 import React from "react";
 import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { removeTransaction } from "../../actions";
 
 const Transaction = props => {
-  function roundToTwo(num) {
+  const roundToTwo = num => {
     return +(Math.round(num + "e+2") + "e-2");
-  }
+  };
+
+  const removeTransaction = index => {
+    props.removeTransaction(index);
+  };
 
   const renderList = () => {
     return props.transactions.map((transaction, index) => {
@@ -17,7 +23,12 @@ const Transaction = props => {
           <td data-label="AmountEUR">{transaction.amount} EUR</td>
           <td data-label="AmountPLN">{amountPL} PLN</td>
           <td data-label="delete" className="right aligned">
-            <button className="ui button">Delete</button>
+            <button
+              className="ui button"
+              onClick={() => removeTransaction(index)}
+            >
+              Delete
+            </button>
           </td>
         </tr>
       );
@@ -32,4 +43,10 @@ const mapStateToProps = state => ({
   transactions: state.transactions
 });
 
-export default connect(mapStateToProps)(Transaction);
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({ removeTransaction }, dispatch);
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Transaction);

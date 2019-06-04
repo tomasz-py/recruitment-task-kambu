@@ -7,6 +7,11 @@ export default (state = initialState, action) => {
     case types.ADD_TRANSACTION:
       return [...state, action.payload];
 
+    case types.REMOVE_TRANSACTION:
+      let newState = [...state];
+      newState.splice(action.payload, 1);
+      return newState;
+
     default:
       return state;
   }
