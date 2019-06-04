@@ -32,6 +32,7 @@ const AddTransaction = props => {
             placeholder="Transaction name"
             onChange={e => setName(e.target.value)}
             value={name}
+            required="required"
           />
         </div>
         <div className="three wide field">
@@ -42,6 +43,7 @@ const AddTransaction = props => {
             placeholder=""
             onChange={e => setAmount(e.target.value)}
             value={amount}
+            required="required"
           />
         </div>
       </div>
