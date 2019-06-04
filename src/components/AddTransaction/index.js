@@ -5,7 +5,7 @@ import { addTransaction } from "../../actions";
 
 const AddTransaction = props => {
   const [name, setName] = useState("");
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState(1);
 
   const onFormSubmit = event => {
     event.preventDefault();
@@ -14,7 +14,7 @@ const AddTransaction = props => {
   };
 
   const clearState = () => {
-    setAmount(0);
+    setAmount(1);
     setName("");
   };
 
