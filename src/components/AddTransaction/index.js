@@ -36,7 +36,7 @@ const AddTransaction = props => {
           />
         </div>
         <div className="three wide field">
-          <label>Amount</label>
+          <label>Amount (EUR)</label>
           <input
             type="number"
             step="0.01"
