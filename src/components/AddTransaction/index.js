@@ -19,7 +19,11 @@ const AddTransaction = props => {
   };
 
   return (
-    <form onSubmit={onFormSubmit} className="ui form">
+    <form
+      onSubmit={onFormSubmit}
+      className="ui form"
+      style={{ marginTop: "10px" }}
+    >
       <div className="fields">
         <div className="eight wide field">
           <label>Name</label>

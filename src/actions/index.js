@@ -9,3 +9,8 @@ export const removeTransaction = payload => ({
   type: types.REMOVE_TRANSACTION,
   payload: payload
 });
+
+export const updateRate = payload => ({
+  type: types.UPDATE_RATE,
+  payload: payload
+});
