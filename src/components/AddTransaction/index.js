@@ -1,13 +1,21 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { addTransaction } from "../../actions";
 
 const AddTransaction = props => {
   const [name, setName] = useState("");
-  const [rate, setRate] = useState(0);
+  const [amount, setAmount] = useState(0);
 
   const onFormSubmit = event => {
     event.preventDefault();
-    console.log(name, rate);
+    props.addTransaction({ name, amount });
+    clearState();
+  };
+
+  const clearState = () => {
+    setAmount(0);
+    setName("");
   };
 
   return (
@@ -19,6 +27,7 @@ const AddTransaction = props => {
             type="text"
             placeholder="Transaction name"
             onChange={e => setName(e.target.value)}
+            value={name}
           />
         </div>
         <div className="three wide field">
@@ -27,7 +36,8 @@ const AddTransaction = props => {
             type="number"
             step="0.01"
             placeholder=""
-            onChange={e => setRate(e.target.value)}
+            onChange={e => setAmount(e.target.value)}
+            value={amount}
           />
         </div>
       </div>
@@ -38,7 +48,19 @@ const AddTransaction = props => {
 };
 
 const mapStateToProps = state => ({
-  euroRate: state.euroRate
+  euroRate: state.euroRate,
+  transactions: state.transactions
 });
 
-export default connect(mapStateToProps)(AddTransaction);
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      addTransaction
+    },
+    dispatch
+  );
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AddTransaction);

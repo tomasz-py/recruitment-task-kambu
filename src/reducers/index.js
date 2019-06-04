@@ -1,8 +1,10 @@
 import { combineReducers } from "redux";
-import euroRate from "./euroReducer";
+import euroReducer from "./euroReducer";
+import transactionReducer from "./transactionReducer";
 
 const reducers = combineReducers({
-  euroRate
+  euroRate: euroReducer,
+  transactions: transactionReducer
 });
 
 export default reducers;

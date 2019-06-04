@@ -1,4 +1,4 @@
-import * as types from "../types/currency";
+import * as types from "../types";
 
 const euroRate = 4.28;
 
