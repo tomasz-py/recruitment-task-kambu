@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { removeTransaction } from "../../actions";
-import { roundToTwo } from "../../helpers";
+import { roundToTwo, convertEuroToPLN } from "../../helpers";
 
 const Transaction = props => {
   const removeTransaction = index => {
@@ -11,7 +11,7 @@ const Transaction = props => {
 
   const renderList = () => {
     return props.transactions.map((transaction, index) => {
-      let amountPL = transaction.amount * props.euroRate;
+      let amountPL = convertEuroToPLN(transaction.amount, props.euroRate);
       amountPL = roundToTwo(amountPL);
 
       return (

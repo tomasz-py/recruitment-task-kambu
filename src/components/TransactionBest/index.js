@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { roundToTwo } from "../../helpers";
+import { roundToTwo, convertEuroToPLN } from "../../helpers";
 
 const TransactionBest = props => {
   const { transactions, euroRate } = props;
@@ -22,7 +22,7 @@ const TransactionBest = props => {
     let index = findHighest();
 
     if (transactions.length > 0 && index > -1) {
-      let amountPL = transactions[index].amount * euroRate;
+      let amountPL = convertEuroToPLN(transactions[index].amount, euroRate);
       amountPL = roundToTwo(amountPL);
 
       return (
@@ -41,13 +41,6 @@ const TransactionBest = props => {
         </div>
       );
     }
-
-    // return (
-    //   <h2 classNameName="ui header">
-    //     <i classNameName="plug icon" />
-    //     <div classNameName="content">{props.transactions[0].name}</div>
-    //   </h2>
-    // );
   };
 
   return renderHelper();
