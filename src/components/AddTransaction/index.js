@@ -6,7 +6,7 @@ import { countDecimals } from "../../helpers";
 
 const AddTransaction = props => {
   const [name, setName] = useState("");
-  const [amount, setAmount] = useState(1);
+  const [amount, setAmount] = useState(1.0);
   const [err, setErr] = useState("");
 
   const onFormSubmit = event => {
@@ -28,6 +28,7 @@ const AddTransaction = props => {
 
   const validate = () => {
     let decimalsLength = countDecimals(amount);
+
     return name.length > 0 && decimalsLength < 3 ? true : setErr(true);
   };
 
@@ -53,11 +54,16 @@ const AddTransaction = props => {
           <input
             type="number"
             step="0.01"
-            placeholder="100,99"
-            onChange={e => setAmount(parseFloat(e.target.value))}
+            placeholder="1.00 - 9999999"
+            onChange={e =>
+              e.target.value.length > 0
+                ? setAmount(parseFloat(e.target.value))
+                : setAmount(1.0)
+            }
             value={amount}
             required
-            pattern="^\d*(\.\d{0,2})?$"
+            min="1"
+            max="9999999"
           />
           <div>
             {err ? (

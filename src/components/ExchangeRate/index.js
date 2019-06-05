@@ -22,14 +22,25 @@ const ExchangeRate = props => {
     };
     let step = stepMaker();
 
+    const onChangeHandler = e => {
+      if (e.target.value < 0) {
+        return props.updateRate(0);
+      } else if (e.target.value > 100) {
+        return props.updateRate(100);
+      }
+      return props.updateRate(e.target.value);
+    };
+
     return (
       <div className="ui labeled input">
         <div className="ui label">1 EURO =</div>
         <input
           type="number"
-          placeholder="4,85"
+          placeholder="0,00 - 100,00"
+          min="0"
+          max="100,0000000"
           step={step}
-          onChange={e => props.updateRate(e.target.value)}
+          onChange={onChangeHandler}
           value={props.euroRate}
         />
         <div className="ui label">PLN</div>
