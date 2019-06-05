@@ -6,29 +6,29 @@ import { countDecimals } from "../../helpers";
 
 const ExchangeRate = props => {
   const renderHelper = () => {
-    let euroRateDecimal = countDecimals(props.euroRate);
-
-    let stepMaker = () => {
-      let step = "0";
-
-      if (euroRateDecimal > 0) {
-        step = step + ".";
-        for (let i = 0; i < euroRateDecimal; i++) {
-          step = step + "0";
-        }
-      }
-
-      return step.replace(/.$/, "1");
-    };
-    let step = stepMaker();
+    const { updateRate } = props;
 
     const onChangeHandler = e => {
-      if (e.target.value < 0) {
-        return props.updateRate(0);
-      } else if (e.target.value > 100) {
-        return props.updateRate(100);
+      let value = e.target.value;
+
+      if (value.length < 1) {
+        return updateRate(value);
       }
-      return props.updateRate(e.target.value);
+
+      value = parseFloat(value);
+      if (countDecimals(value) >= 4) {
+        value = value.toFixed(4);
+        value = parseFloat(value);
+        return updateRate(value);
+      }
+
+      if (value < 0) {
+        return updateRate(0.0001);
+      } else if (value > 100) {
+        return updateRate(100);
+      }
+
+      return updateRate(value);
     };
 
     return (
@@ -38,8 +38,8 @@ const ExchangeRate = props => {
           type="number"
           placeholder="0,00 - 100,00"
           min="0"
-          max="100,0000000"
-          step={step}
+          max="100"
+          step="0.0001"
           onChange={onChangeHandler}
           value={props.euroRate}
         />
