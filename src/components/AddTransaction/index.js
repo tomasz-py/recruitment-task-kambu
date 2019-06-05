@@ -54,11 +54,11 @@ const AddTransaction = props => {
           <input
             type="number"
             step="0.01"
-            placeholder="1.00 - 9999999"
+            placeholder="1,00 - 9999999,00"
             onChange={e =>
               e.target.value.length > 0
                 ? setAmount(parseFloat(e.target.value))
-                : setAmount(1.0)
+                : setAmount(e.target.value)
             }
             value={amount}
             required
