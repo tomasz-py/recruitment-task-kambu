@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "8ab27733c8c63bec0a407a30bab3a715",
+    "revision": "793ce7c340aca3335a16c61ae33ea66b",
     "url": "/recruitment-task-kambu/index.html"
   },
   {
-    "revision": "97098c77aebfa3a56a68",
+    "revision": "19197131e6fc3c406c34",
     "url": "/recruitment-task-kambu/static/css/main.2cce8147.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/recruitment-task-kambu/static/js/2.60170c36.chunk.js"
   },
   {
-    "revision": "97098c77aebfa3a56a68",
-    "url": "/recruitment-task-kambu/static/js/main.0bad84b3.chunk.js"
+    "revision": "19197131e6fc3c406c34",
+    "url": "/recruitment-task-kambu/static/js/main.eca40d2d.chunk.js"
   },
   {
     "revision": "3ed6f0edc2c2520da76d",
