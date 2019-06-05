@@ -11,7 +11,7 @@ const TransactionBest = props => {
     });
     let maxValue = Math.max.apply(Math, tmp);
     let index = tmp.indexOf(maxValue);
-    console.log(index);
+
     if (index === -1) {
       return 0;
     }

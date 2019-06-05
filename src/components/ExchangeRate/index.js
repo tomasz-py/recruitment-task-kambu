@@ -2,9 +2,26 @@ import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { updateRate } from "../../actions";
+import { countDecimals } from "../../helpers";
 
 const ExchangeRate = props => {
   const renderHelper = () => {
+    let euroRateDecimal = countDecimals(props.euroRate);
+
+    let stepMaker = () => {
+      let step = "0";
+
+      if (euroRateDecimal > 0) {
+        step = step + ".";
+        for (let i = 0; i < euroRateDecimal; i++) {
+          step = step + "0";
+        }
+      }
+
+      return step.replace(/.$/, "1");
+    };
+    let step = stepMaker();
+
     return (
       <form className="ui form">
         <div className="ui labeled input">
@@ -12,8 +29,9 @@ const ExchangeRate = props => {
           <input
             type="number"
             placeholder="4,85"
-            step="0.01"
+            step={step}
             onChange={e => props.updateRate(e.target.value)}
+            onKeyDown={e => props.updateRate(e.target.value)}
             value={props.euroRate}
           />
           <div className="ui label">PLN</div>
