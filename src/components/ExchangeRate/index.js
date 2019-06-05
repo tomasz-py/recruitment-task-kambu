@@ -23,20 +23,17 @@ const ExchangeRate = props => {
     let step = stepMaker();
 
     return (
-      <form className="ui form">
-        <div className="ui labeled input">
-          <div className="ui label">1 EURO =</div>
-          <input
-            type="number"
-            placeholder="4,85"
-            step={step}
-            onChange={e => props.updateRate(e.target.value)}
-            onKeyDown={e => props.updateRate(e.target.value)}
-            value={props.euroRate}
-          />
-          <div className="ui label">PLN</div>
-        </div>
-      </form>
+      <div className="ui labeled input">
+        <div className="ui label">1 EURO =</div>
+        <input
+          type="number"
+          placeholder="4,85"
+          step={step}
+          onChange={e => props.updateRate(e.target.value)}
+          value={props.euroRate}
+        />
+        <div className="ui label">PLN</div>
+      </div>
     );
   };
 
