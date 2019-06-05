@@ -10,8 +10,8 @@ const TransactionBest = props => {
       return o.amount;
     });
     let maxValue = Math.max.apply(Math, tmp);
-    let index = tmp.indexOf(maxValue + "");
-
+    let index = tmp.indexOf(maxValue);
+    console.log(index);
     if (index === -1) {
       return 0;
     }
@@ -20,7 +20,6 @@ const TransactionBest = props => {
 
   const renderHelper = () => {
     let index = findHighest();
-
     if (transactions.length > 0 && index > -1) {
       let amountPL = convertEuroToPLN(transactions[index].amount, euroRate);
       amountPL = roundToTwo(amountPL);
