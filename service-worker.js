@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/recruitment-task-kambu/precache-manifest.91fd1092def4edd76dae3fe66f77acc1.js"
+  "/recruitment-task-kambu/precache-manifest.e0cc44627fe13727f55c97df24f860a4.js"
 );
 
 self.addEventListener('message', (event) => {
