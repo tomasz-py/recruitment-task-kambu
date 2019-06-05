@@ -1,4 +1,4 @@
-import { roundToTwo, convertEuroToPLN } from "./index";
+import { roundToTwo, convertEuroToPLN, countDecimals } from "./index";
 
 //Unity tests for roundToTwo function
 test("round 20 expect 20", () => {
@@ -56,4 +56,25 @@ test("convert", () => {
 
 test("convert", () => {
   expect(convertEuroToPLN(10008.1, 4.25874)).toBeCloseTo(42621.895794, 5);
+});
+
+//Unity tests for countDecimals function
+
+test("countDecimals 8.995009 expect 6", () => {
+  expect(countDecimals(8.994909)).toBe(6);
+});
+test("countDecimals 8.99 expect 2", () => {
+  expect(countDecimals(8.99)).toBe(2);
+});
+test("countDecimals 8.0123456 expect 7", () => {
+  expect(countDecimals(8.0123456)).toBe(7);
+});
+test("countDecimals 10 expect 0", () => {
+  expect(countDecimals(10)).toBe(0);
+});
+test("countDecimals 10.0 expect 0", () => {
+  expect(countDecimals(10.0)).toBe(0);
+});
+test("countDecimals 10.1 expect 1", () => {
+  expect(countDecimals(10.1)).toBe(1);
 });

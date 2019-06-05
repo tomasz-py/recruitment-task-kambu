@@ -21,7 +21,7 @@ const Transaction = props => {
           <td data-label="AmountPLN">{amountPL} PLN</td>
           <td data-label="delete" className="right aligned">
             <button
-              className="ui button"
+              className="ui negative button"
               onClick={() => removeTransaction(index)}
             >
               Delete
