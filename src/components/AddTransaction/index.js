@@ -12,7 +12,6 @@ const AddTransaction = props => {
   const onFormSubmit = event => {
     event.preventDefault();
     const isValid = validate();
-
     if (isValid) {
       setErr("");
       props.addTransaction({ name, amount });
@@ -55,7 +54,7 @@ const AddTransaction = props => {
             type="number"
             step="0.01"
             placeholder=""
-            onChange={e => setAmount(e.target.value)}
+            onChange={e => setAmount(parseFloat(e.target.value))}
             value={amount}
             required
             pattern="^\d*(\.\d{0,2})?$"
