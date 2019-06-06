@@ -26,7 +26,7 @@ const TransactionBest = props => {
 
       return (
         <div className="ui message">
-          <div className="header">Highest transaction</div>
+          <div className="header">Highest transaction:</div>
           <p>Name: {transactions[index].name}</p>
           <p>EUR: {transactions[index].amount}</p>
           <p>PLN: {amountPL}</p>
@@ -36,7 +36,7 @@ const TransactionBest = props => {
       return (
         <div className="ui message">
           <div className="header">Highest transaction:</div>
-          <p>There is no transactions :(</p>
+          <p>There is no transaction :(</p>
         </div>
       );
     }
