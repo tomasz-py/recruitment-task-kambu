@@ -2,14 +2,21 @@ import React from "react";
 import { connect } from "react-redux";
 import Transaction from "../Transaction";
 import TransactionBest from "../TransactionBest";
-import { roundToTwo, convertEuroToPLN } from "../../helpers";
+import { roundToTwo } from "../../helpers";
 
 const Transactions = props => {
-  // const { amount } = props.transactions;
-  let temp = props.transactions.map(transaction => {
+  const { transactions } = props;
+
+  const temp = transactions.map(transaction => {
     return transaction.amount;
   });
-  let sumEUR = temp.reduce((partialSum, a) => partialSum + a, 0);
+  const sumEUR = temp.reduce((partialSum, a) => partialSum + a, 0);
+
+  const tempPLN = transactions.map(transaction => {
+    return roundToTwo(transaction.amount * props.euroRate);
+  });
+
+  const sumPLN = tempPLN.reduce((partialSum, a) => partialSum + a, 0);
 
   return (
     <div className="ui grid" style={{ marginTop: "30px" }}>
@@ -28,12 +35,9 @@ const Transactions = props => {
           </tbody>
           <tfoot>
             <tr>
-              <th>Transactions: {props.transactions.length}</th>
+              <th>Transactions: {transactions.length}</th>
               <th>Total: {roundToTwo(sumEUR)} EUR</th>
-              <th>
-                Total: {roundToTwo(convertEuroToPLN(sumEUR, props.euroRate))}{" "}
-                PLN
-              </th>
+              <th>Total: {roundToTwo(sumPLN)} PLN</th>
               <th />
             </tr>
           </tfoot>
