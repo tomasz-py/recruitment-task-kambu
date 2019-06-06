@@ -17,7 +17,7 @@ const ExchangeRate = props => {
       value = parseFloat(value);
 
       if (value < 0) {
-        return updateRate(0.0001);
+        return updateRate("");
       } else if (value > 100) {
         return updateRate(100.0);
       }
@@ -34,7 +34,7 @@ const ExchangeRate = props => {
           type="number"
           placeholder="0,00 - 100,00"
           min="0"
-          max="100"
+          max="100,0000"
           step="0.0001"
           onChange={onChangeHandler}
           value={props.euroRate}

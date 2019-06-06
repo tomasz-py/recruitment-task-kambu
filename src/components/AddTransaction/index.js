@@ -2,34 +2,74 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { addTransaction } from "../../actions";
-import { countDecimals } from "../../helpers";
 
 const AddTransaction = props => {
   const [name, setName] = useState("");
-  const [amount, setAmount] = useState(1.0);
-  const [err, setErr] = useState("");
+  const [amount, setAmount] = useState("");
+  const [errName, setErrName] = useState(false);
+  const [errAmount, setErrAmount] = useState(false);
+
+  const nameValidation = () => {
+    if (name.length > 0) {
+      return true;
+    }
+    setErrName(true);
+    return false;
+  };
+
+  const amountValidation = () => {
+    if (amount > 0) {
+      return true;
+    }
+    setErrAmount(true);
+    return false;
+  };
 
   const onFormSubmit = event => {
     event.preventDefault();
-    const isValid = validate();
-    if (isValid) {
-      setErr("");
+
+    const nameValid = nameValidation();
+    const amountValid = amountValidation();
+
+    if (nameValid && amountValid) {
       props.addTransaction({ name, amount });
       clearState();
-      return;
+      return true;
     }
-    return;
+    return false;
   };
 
   const clearState = () => {
-    setAmount(1);
+    setAmount("");
     setName("");
+    setErrName(false);
+    setErrAmount(false);
   };
 
-  const validate = () => {
-    let decimalsLength = countDecimals(amount);
+  const onAmountChange = e => {
+    if (errAmount) setErrAmount(false);
+    let value = e.target.value;
+    if (value.length === 0) {
+      setAmount(value);
+      return;
+    }
+    value = parseFloat(value);
 
-    return name.length > 0 && decimalsLength < 3 ? true : setErr(true);
+    if (value > 9999999.99) {
+      setAmount(9999999.99);
+      return;
+    } else if (value < 0) {
+      setAmount("");
+      return;
+    }
+
+    if (value > 0) {
+      value = value.toFixed(2);
+      value = parseFloat(value);
+      setAmount(value);
+      return;
+    }
+    return;
   };
 
   return (
@@ -44,31 +84,33 @@ const AddTransaction = props => {
           <input
             type="text"
             placeholder="Transaction name"
-            onChange={e => setName(e.target.value)}
+            onChange={e => {
+              setName(e.target.value);
+              if (errName) setErrName(false);
+            }}
             value={name}
-            required
           />
+          {errName ? (
+            <div className="ui pointing red basic label">
+              Name can't be blank!
+            </div>
+          ) : (
+            <div />
+          )}
         </div>
         <div className="three wide field">
           <label>Amount (EUR)</label>
           <input
             type="number"
             step="0.01"
-            placeholder="1,00 - 9999999,00"
-            onChange={e =>
-              e.target.value.length > 0
-                ? setAmount(parseFloat(e.target.value))
-                : setAmount(e.target.value)
-            }
+            placeholder="1,00 - 9999999,99"
+            onChange={onAmountChange}
             value={amount}
-            required
-            min="1"
-            max="9999999"
           />
           <div>
-            {err ? (
+            {errAmount ? (
               <div className="ui pointing red basic label">
-                Only two digits after comma!
+                Amount can't be blank!
               </div>
             ) : (
               <div />
