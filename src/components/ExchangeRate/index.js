@@ -32,7 +32,7 @@ const ExchangeRate = props => {
         <div className="ui label">1 EURO =</div>
         <input
           type="number"
-          placeholder="0,00 - 100,00"
+          placeholder="0,0000 - 100,0000"
           min="0"
           max="100,0000"
           step="0.0001"
