@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/recruitment-task-currency/static/css/main.2cce8147.chunk.css",
-    "main.js": "/recruitment-task-currency/static/js/main.e57298c6.chunk.js",
-    "main.js.map": "/recruitment-task-currency/static/js/main.e57298c6.chunk.js.map",
+    "main.js": "/recruitment-task-currency/static/js/main.7b838179.chunk.js",
+    "main.js.map": "/recruitment-task-currency/static/js/main.7b838179.chunk.js.map",
     "runtime~main.js": "/recruitment-task-currency/static/js/runtime~main.dcee33cf.js",
     "runtime~main.js.map": "/recruitment-task-currency/static/js/runtime~main.dcee33cf.js.map",
-    "static/js/2.60170c36.chunk.js": "/recruitment-task-currency/static/js/2.60170c36.chunk.js",
-    "static/js/2.60170c36.chunk.js.map": "/recruitment-task-currency/static/js/2.60170c36.chunk.js.map",
+    "static/js/2.2c59d3f2.chunk.js": "/recruitment-task-currency/static/js/2.2c59d3f2.chunk.js",
+    "static/js/2.2c59d3f2.chunk.js.map": "/recruitment-task-currency/static/js/2.2c59d3f2.chunk.js.map",
     "index.html": "/recruitment-task-currency/index.html",
-    "precache-manifest.62a54c7f4b380772e5c6f2afc858a30e.js": "/recruitment-task-currency/precache-manifest.62a54c7f4b380772e5c6f2afc858a30e.js",
+    "precache-manifest.75c591b90e56f90387cbdc75c80198ef.js": "/recruitment-task-currency/precache-manifest.75c591b90e56f90387cbdc75c80198ef.js",
     "service-worker.js": "/recruitment-task-currency/service-worker.js",
     "static/css/main.2cce8147.chunk.css.map": "/recruitment-task-currency/static/css/main.2cce8147.chunk.css.map"
   }
