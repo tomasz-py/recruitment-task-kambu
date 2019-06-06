@@ -2,7 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { updateRate } from "../../actions";
-import { countDecimals } from "../../helpers";
 
 const ExchangeRate = props => {
   const renderHelper = () => {
@@ -16,18 +15,15 @@ const ExchangeRate = props => {
       }
 
       value = parseFloat(value);
-      if (countDecimals(value) >= 4) {
-        value = value.toFixed(4);
-        value = parseFloat(value);
-        return updateRate(value);
-      }
 
       if (value < 0) {
         return updateRate(0.0001);
       } else if (value > 100) {
-        return updateRate(100);
+        return updateRate(100.0);
       }
 
+      value = value.toFixed(4);
+      value = parseFloat(value);
       return updateRate(value);
     };
 
